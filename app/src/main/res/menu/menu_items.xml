@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/refresh"
+        android:icon="@drawable/ic_baseline_refresh_24"
+        android:title="refresh"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/developer"
+        android:icon="@drawable/ic_baseline_self_improvement_24"
+        android:title="developer"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/exit"
+        android:icon="@drawable/ic_baseline_power_settings_new_24"
+        android:title="exit"
+        app:showAsAction="ifRoom" />
+
+    <item android:title="ContactMe"
+        android:id="@+id/contactMe"
+        app:showAsAction="never"
+        />
+</menu>
