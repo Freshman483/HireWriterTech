@@ -165,6 +165,74 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        new MenuInflater(this).inflate(R.menu.menu_items, menu);
+        menu.setQwertyMode(true);
+        return super.onCreateOptionsMenu(menu);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.refresh:
+                Animation animation = AnimationUtils.loadAnimation(this, R.anim.abc_popup_exit);
+                webView.startAnimation(animation);
+                Toast.makeText(this, "Refresh Successful", Toast.LENGTH_LONG).show();
+                return true;
+
+            case R.id.developer:
+
+                new MaterialAlertDialogBuilder(this)
+                        .setTitle("Developer->DevOPS Society\n")
+                        .setCancelable(false)
+                        .setMessage("Name: Developer Society Kenya (DevOpS Ke)\n" +
+                                "\nFounder:\nshimitadouglas@gmail.com\n tranzeer@gmail.com\n" +
+                                "\nCall:+254757450727\n" +
+                                "\nGithub: FreshMan483\n" +
+                                "\nOccupation:Student @ Maseno University till 2024\n \n")
+                        .setPositiveButton("Ok", (dialogInterface, i) -> dialogInterface.dismiss()).create().show();
+
+                return true;
+
+            case R.id.exit:
+                new AlertDialog.Builder(this)
+                        .setCancelable(false)
+                        .setTitle("Exit Status")
+                        .setMessage("are Sure You Want To Exit From the App?")
+                        .setPositiveButton("yes,Exit", (dialogInterface, i) -> {
+                            dialogInterface.dismiss();
+                            System.exit(0);
+                        })
+                        .setNegativeButton("No,Do Not Exit", (dialogInterface, i) -> dialogInterface.dismiss())
+                        .create()
+                        .show();
+                return true;
+
+            case R.id.contactMe:
+                PopupMenu popupMenu=new PopupMenu(MainActivity.this,floatingActionButton);
+                popupMenu.inflate(R.menu.popup);
+                popupMenu.setForceShowIcon(true);
+                popupMenu.setOnMenuItemClickListener(item1 -> {
+                    switch (item1.getItemId())
+                    {
+                        case R.id.calling:
+                            startActivity(new Intent(Intent.ACTION_DIAL,Uri.parse("tel:+254757450727")));
+                            popupMenu.dismiss();
+                            return  true;
+                        default:
+                            return false;
+                    }
+                });
+                popupMenu.show();
+                return true;
+
+
+            default:
+                return false;
+        }
+    }
 
     public void functionClicked(View view) {
         Animation animation=AnimationUtils.loadAnimation(this,R.anim.abc_popup_enter);
