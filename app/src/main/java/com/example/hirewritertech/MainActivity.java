@@ -26,10 +26,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.PopupMenu;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,15 +39,14 @@ public class MainActivity extends AppCompatActivity {
     public final int REQUEST_CODE = 1010;
     ConnectivityManager connectivityManager;
     NetworkInfo networkInfo;
-    ProgressDialog progressDialog;
+    FloatingActionButton floatingActionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         webView = findViewById(R.id.webView);
-
-
+        floatingActionButton=findViewById(R.id.floating);
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) == PackageManager.PERMISSION_GRANTED) {
             Toast.makeText(this, "Internet Permission Grant Was Successful", Toast.LENGTH_LONG).show();
             callInternetCheckWithWebView();
@@ -163,55 +164,7 @@ public class MainActivity extends AppCompatActivity {
         callInternetCheckWithWebView();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        new MenuInflater(this).inflate(R.menu.menu_items, menu);
-        menu.setQwertyMode(true);
-        return super.onCreateOptionsMenu(menu);
 
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.refresh:
-                Animation animation = AnimationUtils.loadAnimation(this, R.anim.abc_popup_exit);
-                webView.startAnimation(animation);
-                Toast.makeText(this, "Refresh Successful", Toast.LENGTH_LONG).show();
-                return true;
-
-            case R.id.developer:
-
-                new MaterialAlertDialogBuilder(this)
-                        .setTitle("Developer->DevOPS Society\n")
-                        .setCancelable(false)
-                        .setMessage("Name: Developer Society Kenya (DevOpS Ke)\n" +
-                                "\nFounder:\nshimitadouglas@gmail.com\n tranzeer@gmail.com\n" +
-                                "\nCall:+254757450727\n" +
-                                "\nGithub: FreshMan483\n" +
-                                "\nOccupation:Student @ Maseno University till 2024\n \n")
-                        .setPositiveButton("Ok", (dialogInterface, i) -> dialogInterface.dismiss()).create().show();
-
-                return true;
-
-            case R.id.exit:
-                new AlertDialog.Builder(this)
-                        .setCancelable(false)
-                        .setTitle("Exit Status")
-                        .setMessage("are Sure You Want To Exit From the App?")
-                        .setPositiveButton("yes,Exit", (dialogInterface, i) -> {
-                            dialogInterface.dismiss();
-                            System.exit(0);
-                        })
-                        .setNegativeButton("No,Do Not Exit", (dialogInterface, i) -> dialogInterface.dismiss())
-                        .create()
-                        .show();
-                return true;
-
-            default:
-                return false;
-        }
-    }
 
     public void functionClicked(View view) {
         Animation animation=AnimationUtils.loadAnimation(this,R.anim.abc_popup_enter);

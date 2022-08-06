@@ -13,14 +13,17 @@
         android:icon="@drawable/ic_baseline_self_improvement_24"
         android:title="developer"
         app:showAsAction="ifRoom" />
+
+
+    <item
+        android:id="@+id/contactMe"
+        android:icon="@drawable/ic_baseline_call_24"
+        android:title="ContactMe"
+        app:showAsAction="ifRoom" />
+
     <item
         android:id="@+id/exit"
         android:icon="@drawable/ic_baseline_power_settings_new_24"
         android:title="exit"
         app:showAsAction="ifRoom" />
-
-    <item android:title="ContactMe"
-        android:id="@+id/contactMe"
-        app:showAsAction="never"
-        />
 </menu>
